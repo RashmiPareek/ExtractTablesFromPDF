@@ -42,7 +42,7 @@ def pdfExtraction(pdfFilePath,folderPath):
 
 
 if __name__ == '__main__':
-    pdfExtraction("C:\\Users\\SPECTRE\\Downloads\\29-July-2021.pdf","C:\\Users\\SPECTRE\\Documents\\akaBot\\ITSA\\")
+    pdfExtraction(FilePath,FolderPath\\")
 
 
 
