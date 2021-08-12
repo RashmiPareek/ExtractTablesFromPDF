@@ -1,0 +1,40 @@
+import pdfplumber
+import pandas as pd
+import pyPdf
+
+pdfFilePath = "C:\\Users\\SPECTRE\\Downloads\\29-July-2021.pdf"
+
+#reader = pyPdf.PdfFileReader(open(pdfFilePath))
+print(pdfFilePath.trailer["/Root"]["/PageLabels"]["/Nums"])
+
+
+
+#SSP
+pdf = pdfplumber.open(pdfFilePath)
+page = pdf.pages[6]
+tables = page.find_tables()
+SSP = tables[3].extract(x_tolerance = 5)
+dfSSP = pd.DataFrame(SSP[1:], columns=SSP[0])
+dfSSP.to_excel("C:\\Users\\SPECTRE\\Documents\\akaBot\\ITSA\\SSP.xlsx",index=0)
+
+#DAP
+page = pdf.pages[7]
+tables = page.find_tables()
+DSP = tables[0].extract(x_tolerance = 5)
+dfDSP = pd.DataFrame(DSP[1:], columns=DSP[0])
+dfDSP.to_excel("C:\\Users\\SPECTRE\\Documents\\akaBot\\ITSA\\DAP.xlsx",index=0)
+
+#MAP
+page = pdf.pages[7]
+tables = page.find_tables()
+MAP = tables[1].extract(x_tolerance = 5)
+dfMAP = pd.DataFrame(MAP[1:], columns=MAP[0])
+dfMAP.to_excel("C:\\Users\\SPECTRE\\Documents\\akaBot\\ITSA\\MAP.xlsx",index=0)
+
+
+#TSP
+page = pdf.pages[7]
+tables = page.find_tables()
+TSP = tables[2].extract(x_tolerance = 5)
+dfTSP = pd.DataFrame(TSP[1:], columns=TSP[0])
+dfTSP.to_excel("C:\\Users\\SPECTRE\\Documents\\akaBot\\ITSA\\TSP.xlsx",index=0)
